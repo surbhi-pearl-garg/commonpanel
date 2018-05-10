@@ -27,3 +27,5 @@ Route::get('upload',function()
 {
 	return view('upload');
 });
+Route::get('file','FileController@showUploadForm')->name('upload.file');
+Route::post('file','FileController@storeFile');
