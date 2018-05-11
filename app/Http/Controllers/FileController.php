@@ -20,7 +20,7 @@ class FileController extends Controller
     		$file->name=$filename;
     		$file->size=$filesize;
     		$file->save();
-    		return 'yes';
+    		return 'file uploaded successfully';
     	}
     	return $request->all();
     }

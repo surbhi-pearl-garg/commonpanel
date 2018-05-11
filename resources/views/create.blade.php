@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>upload file</title>
-  <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> -->
+  <title>SimpleAdminLTE 2 | Blank Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -18,8 +17,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
-  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -261,7 +258,6 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
         </li>
-
  <li class="treeview">
           <a href="#">
             <i class="fa fa-picture-o"></i> <span>Upload</span>
@@ -270,7 +266,7 @@
             </span>
           </a>
         </li>
-<li class="treeview">
+         <li class="treeview">
           <a href="#">
             <i class="fa fa-picture-o"></i> <span>Crud</span>
             <span class="pull-right-container">
@@ -299,24 +295,12 @@
         <li class="active">Blank page</li>
       </ol>
     </section>
-<br><br><br>
-
-
-        <form action="{{ route('upload.file')}}" method="post" class="form-hrizontal" enctype="multipart/form-data">
-          {{ csrf_field()}}
-          <input type="file" name="file">
-          <input type="submit" class="btn btn-info">
-        </form>
-    
-
-
-
 
     <!-- Main content -->
- <!--  <section class="content">
+    <section class="content">
 
       <!-- Default box -->
-   <!--   <div class="box">
+      <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Title</h3>
 
@@ -328,17 +312,26 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          <form action ="{{ URL('users') }}{{ isset($user) ? '/' . $user->id : '' }}" method="post">
+      
+        {{csrf_field() }}
+        @if (isset($user))
+          {{ method_field('PUT') }}
+        @endif
+         <input type="text" name="name" placeholder="name" class="form-control" value="{{ isset($user) ? $user->name : '' }}">
+        <input type="email" name="email" placeholder="Email" class="form-control" value="{{ isset($user) ? $user->email : ''  }}">
+        <button type="submit" class="btn btn-sm btn-success">Create</button>
+      </form>
         </div>
         <!-- /.box-body -->
-    <!--    <div class="box-footer">  
+        <div class="box-footer">
           Footer
         </div>
         <!-- /.box-footer-->
-   <!--   </div>
+      </div>
       <!-- /.box -->
 
- <!--   </section>  ->
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

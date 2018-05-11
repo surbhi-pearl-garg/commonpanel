@@ -23,9 +23,21 @@ Route::get('login',function()
 {
 	return view('login');
 });
+Route::get('try',function()
+{
+	return view('try');
+});
 Route::get('upload',function()
 {
 	return view('upload');
 });
 Route::get('file','FileController@showUploadForm')->name('upload.file');
 Route::post('file','FileController@storeFile');
+
+Route::group(['prefix'=>''],function(){
+	Route::resource('users','CrudController');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
